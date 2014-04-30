@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Jazz Concerts in the City</title>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- css -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="css/style.css" rel="stylesheet" media="screen">
+    <link href="css/demo.css" rel="stylesheet" media="screen">
+	<link href="color/default.css" rel="stylesheet" media="screen">
+	<script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+	<script src="js/modernizr.custom.js"></script>
+	<script src="js/modernizr.custom.63321.js"></script>
+	
+	<script src="js/instagram.js" type="text/javascript"></script>
+	<script src="js/instafeed.min.js" type="text/javascript"></script>
+
+        
+    <!--Google Maps-->
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map { height: 450px }
+    </style>
+    
+    <!--Maps-->
+     <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA4CwBKfUcUA_2N4y-w4jVP2WYHHOdsTt0&sensor=true">
+    </script>
+    <script type="text/javascript">
+     
+     var styles = [
+    {
+      stylers: [
+        { hue: "#62469a" },
+        { saturation: -60 }
+      ]
+    },{
+      featureType: "road",
+      elementType: "geometry",
+      stylers: [
+        { lightness: 100 },
+        { visibility: "simplified" }
+      ]
+    },{
+      featureType: "road",
+      elementType: "labels",
+      stylers: [
+        { visibility: "off" }
+      ]
+    }
+  ];
+     
+     var styledMap = new google.maps.StyledMapType(styles,
+    {name: "Styled Map"});
+     
+     
+     $(document).ready(function(){
+      console.log('ready');
+      
+      function initialize2(){
+        //myscrollbar 
+	    $('#scrollbar1').tinyscrollbar();
+	    console.log('scrollbarworking');
+      };
+      
+      function initialize3(){
+        //myscrollbar 
+	    $('#scrollbar2').tinyscrollbar({ axis: 'x'});
+	    console.log('scrollbarworking');
+      };
+
+	     function initialize() {
+	   
+	       var mapOptions = {
+		 center: new google.maps.LatLng(40.7525341, -73.9968937),
+		 minZoom: 12,
+		 maxZoom: 16,
+		 zoom: 12,
+		 mapTypeControlOptions: {
+		 mapTypeIds: [google.maps.MapTypeId.ROADMAP, 'map_style']
+		 }
+		 
+		 
+	   };
+	     
+	      var google_map = new
+	      google.maps.Map(document.getElementById("map"),
+	       mapOptions);
+	     
+ 
+	     google_map.mapTypes.set('map_style', styledMap);
+		google_map.setMapTypeId('map_style');
+	   var info_window = new google.maps.InfoWindow({
+            content: 'loading'
+        });
+
+        var t = [];
+        var x = [];
+        var y = [];
+        var h = [];
+
+        t.push('Location Name 2');
+        x.push(40.752209);
+        y.push(-73.993203);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Cleopatra&rsquo;s Needle</strong></span><br/><p><img src="images/needle.jpg" width=73 height=64.5></p><p style="line-height:80%">Live jazz & Mediterranean eats</p><p style="line-height:80%"><i>&nbsp;2485 Broadway</p><p style="line-height:80%">New York&#44; NY 10025</i></p>');
+
+        t.push('Location Name 2');
+        x.push(40.7487954);
+        y.push(-73.9966791);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Smalls Jazz Club</strong></span><br/><p><img src="images/smalls.jpg" width=73 height=64.5></p><p style="line-height:80%">Bopping basement bar</p><p style="line-height:80%"><i>&nbsp;183 W 10th St</p><p style="line-height:80%">New York&#44; NY 10014</i></p>');
+	
+        t.push('Location Name 2');
+        x.push(40.7221954);
+        y.push(-73.9943617);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Downtown Music Gallery</strong></span><br/><p><img src="images/dmg.jpg" width=73 height=64.5></p><p style="line-height:80%">Underground & specialty record shop</p><p style="line-height:80%"><i>&nbsp;13 Monroe St</p><p style="line-height:80%">New York&#44; NY 10002</i></p>');
+
+        t.push('Location Name 2');
+        x.push(40.741568);
+        y.push(-73.992);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Metropolitan Room</strong></span><br/><p><img src="images/metro.png" width=73 height=64.5></p><p style="line-height:80%">Jazz cabaret club</p><p style="line-height:80%"><i>&nbsp;34 W 22nd St</p><p style="line-height:80%">New York&#44; NY 10010</i></p>');
+	
+        t.push('Location Name 2');
+        x.push(40.7491855);
+        y.push(-73.9814871);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Jazz Standard</strong></span><br/><p><img src="images/standard.jpg" width=73 height=64.5></p><p style="line-height:80%">Jazz&#44; blues & funk club</p><p style="line-height:80%"><i>&nbsp;116 E 27th St</p><p style="line-height:80%">New York&#44; NY 10016</i></p>');
+
+	
+        t.push('Location Name 2');
+        x.push(40.7890918);
+        y.push(-73.9680668);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Smoke Jazz & Supper Club</strong></span><br/><p><img src="images/mainsmokelounge.jpg" width=73 height=64.5></p><p style="line-height:80%">Intimate jazz club</p><p style="line-height:80%"><i>&nbsp;2751 Broadway</p><p style="line-height:80%">New York&#44; NY 10025</i></p>');
+
+        t.push('Location Name 2');
+        x.push(40.8058719);
+        y.push(-73.9498921);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Apollo Theater</strong></span><br/><p><img src="images/image.jpg" width=73 height=64.5></p><p style="line-height:80%">Legendary Harlem performance hall</p><p style="line-height:80%"><i>&nbsp;253 W 125th St</p><p style="line-height:80%">New York&#44; NY 10027</i></p>');
+	
+        t.push('Location Name 2');
+        x.push(40.77052);
+        y.push(-73.9548703);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Cafe Carlyle</strong></span><br/><p><img src="images/maincafecarlyle.jpg" width=73 height=64.5></p><p style="line-height:80%">Old-world cabaret & supper club</p><p style="line-height:80%"><i>&nbsp;35 E 76th St</p><p style="line-height:80%">New York&#44; NY 10075</i></p>');
+
+        t.push('Location Name 2');
+        x.push(40.7579409);
+        y.push(-73.9674874);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>SOMETHIN&rsquo; Jazz Club</strong></span><br/><p><img src="images/club.jpg" width=73 height=64.5></p><p style="line-height:80%">quintet - 51st st</p><p style="line-height:80%"><i>&nbsp;212 E 52nd St</p><p style="line-height:80%">New York&#44; NY 10022</i></p>');
+
+        t.push('Location Name 2');
+        x.push(40.75582);
+        y.push(-74.0009652);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>New York Jazz Workshop</strong></span><br/><p><img src="images/nyjw.jpg" width=73 height=64.5></p><p style="line-height:80%">saxophonist - ear training</p><p style="line-height:80%"><i>>New York&#44; NY</i></p>');
+
+        t.push('Location Name 2');
+        x.push(40.7688098);
+        y.push(-73.9832465);
+        h.push('<span><img src="images/tini.png" width=30 height=30>&nbsp;&nbsp;<strong>Jazz at Lincoln Center - Frederck P. Rose Hall</strong></span><br/><p><img src="images/jalc3.jpg" width=73 height=64.5></p><p style="line-height:80%">Jazz concert hall</p><p style="line-height:80%"><i>&nbsp;10 Columbus Cir</p><p style="line-height:80%">New York&#44; NY 10023</i></p>');
+      
+       var image = {
+	url: 'images/marker.png',
+	size: new google.maps.Size(40, 70),
+	};
+       
+    
+	
+        var i = 0;
+        for ( item in t ) {
+            var m = new google.maps.Marker({
+                map: google_map,
+		icon: image,
+                animation: google.maps.Animation.DROP,
+                title:     t[i],
+                position:  new google.maps.LatLng(x[i],y[i]),
+                html:      h[i]
+            });
+
+            google.maps.event.addListener(m, 'click', function() {
+                info_window.setContent(this.html);
+                info_window.open(google_map, this);
+            });
+            i++;
+        }
+	   }
+	     
+	     google.maps.event.addDomListener(window, 'load', initialize);
+	     
+	     console.log('loading map');
+
+      });
+
+	  
+	  //NPR API//
+	  var sTitle;
+	  var sTeaser;
+	  $(document).ready(function(){
+	    console.log("doc ready");
+	    $("#dvContent").append("<ul></ul>");
+	    $.ajax({
+	      type: "GET",
+	      url: "http://api.npr.org/query?id=10002&apiKey=MDEzNjE1NzY5MDEzOTgwODcyMjIxNTZlMw001",
+	      dataType: "xml",
+	      success: function(xml){
+		console.log(xml);
+	      $(xml).find('list').each(function(){
+		$(xml).find('story').each(function(){
+		    sTitle = $(this).find('title').text();
+		    sTeaser = $(this).find('miniTeaser').text();
+		    sTeaser2 = $(this).find('teaser').text();
+		    sThumb = $(this).find('large').text();
+		    sLink = $(this).find('link').text();
+		    sPub = $(this).find('pubDate').text();
+		    console.log(sTitle);
+		    
+		    $("<li></li>").html("<center><div id='container' style='width:500px' align='center'><span><img src='" +  sThumb + "' style=padding: 8px width=120 height=120 align=left></span><b><a href='" +  sLink + "'>" + sTeaser + "</a></b><br><font size=1>" + sPub + "</font><br>" + sTeaser2 + "</div><br></center>").appendTo("#dvContent ul");
+		});
+	      
+	      });
+	    },
+	    error: function() {
+	      alert("An error occurred while processing XML file.");
+	    }
+	    });
+	  });
+          
+
+	  //Insta//
+	  var feed = new Instafeed({
+        get: 'tagged',
+        tagName: 'jazz',
+        clientId: '2828fd5d2e834105a25b62cae91305cd'
+	});
+	feed.run();
+  </script>
+
+	</script>
+	
+	
+      </head>
+  <body>
+	<div class="menu-area">
+			<div id="dl-menu" class="dl-menuwrapper">
+						<button class="dl-trigger">Open Menu</button>
+						<ul class="dl-menu">
+							<li>
+								<a href="#intro">Home</a>
+							</li>
+							<li><a href="#about">Overview</a></li>
+							<li><a href="#services">Concerts</a></li>
+							<li><a href="#works">News</a></li>
+							<li><a href="#contact">Social Media</a></li>
+						</ul>
+					</div><!-- /dl-menuwrapper -->
+	</div>	
+
+	  <!-- intro area -->	  
+	  <div id="intro">
+	  
+			<div class="intro-text">
+				<div class="container">
+					<div class="row">
+
+							<h1>MOTION GRAPHICS PROJECT</h1>
+
+					</div>
+				</div>
+		 	</div>
+			
+	 </div>
+	  
+
+	  
+	  
+	  <!-- About -->
+	  <section id="about" class="home-section bg-white" style="padding-bottom: 40px;">
+		<div class="container">
+			  <div class="row">
+				  <div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+					 <h2>Overview</h2>
+					 <p>
+                                        Spanning the 1920s to the mid-1930s, the Harlem Renaissance was a literary, artistic, and intellectual movement that kindled a new black cultural identity. Its essence was summed up by critic and teacher Alain Locke in 1926 when he declared that through art, “Negro life is seizing its first chances for group expression and self determination.” Harlem became the center of a “spiritual coming of age” in which Locke’s “New Negro” transformed “social disillusionment to race pride.” Chiefly literary, the Renaissance included the visual arts but excluded jazz, despite its parallel emergence as a black art form.</p><p>
+                                        The Harlem Renaissance influenced future generations of black writers, but it was largely ignored by the literary establishment after it waned in the 1930s. With the advent of the civil rights movement, it again acquired wider recognition.
+                                         </p><p>
+		    Live in NYC and interested in local Jazz music? Want to learn more about the history of jazz in your community? Below are some resouces compiled to make the search for Jazz in the City a little bit easier!</p>
+                </div>
+			  </div>			  
+		  </div>	  
+	  </section>
+	  
+		<!-- spacer -->	  
+		<section id="spacer1" class="home-section spacer">	
+           <div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="color-light">
+						<h2 class="wow bounceInDown" data-wow-delay="1s">Harlem Renissance Artist and Present-day Jazz Artist</h2>
+						<p class="lead wow bounceInUp" data-wow-delay="2s">
+
+
+<div id="mi-slider" class="mi-slider">
+					<ul>
+						<li><img src="img/LilHardinArmstrong.jpg" alt="img01"><h4>Lil Hardin Armstrong</h4></li>
+						<li><img src="img/TheDandridgeSisters.jpg" alt="img02"><h4>The Dandridge Sisters</h4></li>
+						<li><img src="img/EllaFitzgerald.jpg" alt="img03"><h4>Ella Fitzgerald</h4></li>
+						<li><img src="img/BessieSmith.jpg" alt="img04"><h4>Bessie Smith</h4></li>
+					</ul>
+					<ul>
+						<li><img src="img/LouisArmstrong.jpg" alt="img05"><h4>Louis Armstrong</h4></li>
+						<li><img src="img/CabCalloway.jpg" alt="img06"><h4>Cab Calloway</h4></li>
+						<li><img src="img/DukeEllington.jpg" alt="img07"><h4>Duke Ellington</h4></li>
+						<li><img src="img/ChickWebb.jpg" alt="img08"><h4>Chick Webb</h4></li>
+					</ul>
+					<ul>
+						<li><img src="img/AloeBlacc.jpg" alt="img09"><h4>Aloe Blacc</h4></li>
+						<li><img src="img/JohnLegend.jpg" alt="img10"><h4>John Legend</h4></li>
+						<li><img src="img/RaphaelSaadiq.jpg" alt="img11"><h4>Raphael Saadiq</h4></li>
+                                                <li><img src="img/EsperanzaSpalding.jpg" alt="img12"><h4>Esperanza Spalding</h4></li>
+
+					</ul>
+					<nav>
+						<a href="#"><p>Renissance Women</p></a>
+						<a href="#"><p>Renissance Men</p></a>
+						<a href="#"><p>Present-day</p></a>
+					</nav>
+				</div>
+						</div>
+					</div>				
+				</div>
+            </div>
+		</section>	  
+	  
+	  <!-- Services -->
+	 <section id="services" class="home-section bg-white">
+		<div class="container">
+			  <div class="row">
+				  <div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+					 <h2>Jazz Concerts in NYC</h2>
+					 <p>Use the interactive map to see what local jazz bars have upcoming performaces.</p>
+					</div>
+				  </div>
+			  </div>
+			  <div class="row">
+                <div class="col-md-offset-2 col-md-8" data-wow-delay="0.3s">
+                
+		<div id="map"></div>
+
+		</div>
+                </div>
+			  </div>	
+		</div>
+	</section>
+	
+	 <!-- Works -->
+	<section id="works" class="home-section bg-gray" style="padding-bottom: 20px;">
+			<div class="container">
+			  <div class="row">
+					<div class="section-heading">
+					 <h2><img src="img/npr.png" height="65px">    Stories</h2><br>
+					 <p><center><div style="width:500px;max-height:400px;overflow:auto;"><div id="dvContent"></div></div></center></p>
+					</div>
+			  </div>
+				<div class="row">
+					
+				</div>
+			</div>
+		</section>	  
+	
+		<!-- spacer 2 -->	  
+		<section id="spacer2" class="home-section spacer" style="padding-top: 40px; padding-bottom: 40px;">	
+           <div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<div class="color-light">
+						<h2 class="wow bounceInDown" data-wow-delay="1s">"An artist must be free to choose what he does, certainly, but he must also never be afraid to do what he might choose."</h2>
+						<p class="lead wow bounceInUp" data-wow-delay="2s">Langston Hughes</p>	
+						
+						<div class="div#photos-wrap"></div>
+						
+						</div>
+					</div>				
+				</div>
+            </div>
+		</section>	
+	  
+	 <!-- Contact -->
+	  <section id="contact" class="home-section bg-white" style="padding-top: 40px; padding-bottom: 40px;">
+	  	<div class="container">
+			  <div class="row">
+				  <div class="col-md-offset-2 col-md-8">
+					<div class="section-heading">
+					 <h2>Let's Get Social&#33;</h2>
+
+      <h4><img src="img/insta.jpg" width="40px" height="40px">   Instagram</h4><h5><i><font size="2">#Jazz</font></i></h5>
+<div id="instafeed"></div></section>
+
+      <section class="home-section bg-gray" style="padding-top: 40px; padding-bottom: 40px;">
+
+      <h4><img src="img/twitter.png" width="50px" height="50px">   Twitter</h4>
+<a class="twitter-timeline" href="https://twitter.com/search?q=%23jazz" data-widget-id="458233565633736704">Tweets about "#jazz"</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+
+
+<div id="div#photos-wrap"></div></section>
+				
+	  		</div>
+                    </div>
+	  	</div>
+	  </section>
+	 
+	 <!-- js -->
+
+    <script src="js/bootstrap.min.js"></script>
+	<script src="js/jquery.smooth-scroll.min.js"></script>
+	<script src="js/jquery.dlmenu.js"></script>
+	<script src="js/wow.min.js"></script>
+	<script src="js/custom.js"></script>
+    	    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+            <script src="js/jquery.catslider.js"></script>
+	    <script>
+		$(function() {
+
+		$( '#mi-slider' ).catslider();
+
+		});
+	    </script>
+  	
+</html>
